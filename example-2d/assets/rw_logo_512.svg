@@ -1,0 +1,21 @@
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" fill="#FF5252"/>
+
+  <g transform="translate(256, 246)">
+    <path d="M -96 0 A 96 96 0 0 1 96 0" fill="none" stroke="white" stroke-width="24" stroke-linecap="squre"/>
+    <rect x="-12" y="-216" width="24" height="216" fill="white"/>
+    <rect x="-108" y="-150" width="216" height="24" fill="white"/>
+  </g>
+
+  <g transform="translate(138, 482)">
+    <path d="M -96 0 A 96 96 0 0 1 96 0" fill="none" stroke="white" stroke-width="24" stroke-linecap="squre"/>
+    <rect x="-12" y="-216" width="24" height="216" fill="white"/>
+    <rect x="-108" y="-150" width="216" height="24" fill="white"/>
+  </g>
+
+  <g transform="translate(374, 482)">
+    <path d="M -96 0 A 96 96 0 0 1 96 0" fill="none" stroke="white" stroke-width="24" stroke-linecap="squre"/>
+    <rect x="-12" y="-216" width="24" height="216" fill="white"/>
+    <rect x="-108" y="-150" width="216" height="24" fill="white"/>
+  </g>
+</svg>
