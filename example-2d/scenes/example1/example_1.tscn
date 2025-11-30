@@ -1,9 +1,65 @@
-[gd_scene load_steps=6 format=3 uid="uid://o5l64v1h03w4"]
+[gd_scene load_steps=17 format=4 uid="uid://o5l64v1h03w4"]
 
 [ext_resource type="Texture2D" uid="uid://ce3bulqhi6r2y" path="res://assets/graphics/maps/map.png" id="1_jk85i"]
 [ext_resource type="PackedScene" uid="uid://bso3w8xryq2lx" path="res://scenes/example1/player.tscn" id="1_vaijx"]
 [ext_resource type="Script" uid="uid://dy3wwbaql7f0p" path="res://scenes/example1/example_1.gd" id="1_weqnr"]
 [ext_resource type="PackedScene" uid="uid://duc8ji0ah8rxu" path="res://scenes/example1/drone.tscn" id="4_c16ul"]
+[ext_resource type="PackedScene" uid="uid://csmnr2fmw6mb3" path="res://scenes/example1/ball.tscn" id="5_fptpd"]
+[ext_resource type="Texture2D" uid="uid://c6jpx5ebyn8qw" path="res://assets/graphics/tilesets/soil.png" id="6_1pqyy"]
+[ext_resource type="Texture2D" uid="uid://dvtfj84ulsf8n" path="res://assets/graphics/tilesets/outside_walls.png" id="6_bk7b2"]
+[ext_resource type="PackedScene" uid="uid://cp76mh6o3ijkc" path="res://scenes/example1/steam_vent.tscn" id="8_4ongg"]
+[ext_resource type="PackedScene" uid="uid://bnm74x04axaf0" path="res://scenes/example1/simple_light.tscn" id="9_hes8g"]
+[ext_resource type="PackedScene" uid="uid://dkx64eomco4nm" path="res://scenes/example1/ui.tscn" id="10_bhv3n"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ongg"]
+texture = ExtResource("6_1pqyy")
+texture_region_size = Vector2i(390, 390)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_hes8g"]
+tile_size = Vector2i(390, 390)
+sources/0 = SubResource("TileSetAtlasSource_4ongg")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bhv3n"]
+texture = ExtResource("6_bk7b2")
+texture_region_size = Vector2i(390, 390)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-72.6248, -65.70816, 195, -61.266296, 195, 57.062332, -62.249832, 62.249847)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(195, 62.768585, -195, 58.584015, -195, -58.58403, 195, -54.39946)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(66.953156, 66.953156, -195, 58.584015, -195, -58.58403, 64.86087, -69.045456)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-60.6763, -71.13774, 60.6763, -62.768585, 60.52069, 195, -55.33316, 195)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-58.584015, -64.860886, 195, -58.584015, 195, 60.676315, 52.30716, 54.399445, 60.52069, 195, -55.33316, 195)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-195, -62.768585, 56.49173, -60.6763, 62.768585, 195, -56.491714, 195, -60.6763, 54.399445, -195, 54.39946)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-60.6763, -195, 62.768585, -195, 60.52069, 195, -55.33316, 195)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(195, 62.768585, -56.49173, 60.6763, -62.768585, -195, 56.491714, -195, 60.6763, -54.399445, 195, -54.39946)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(62.768585, -195, 60.6763, 56.49173, -195, 62.768585, -195, -56.491714, -54.399445, -60.6763, -54.39946, -195)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-60.6763, 39.753418, -58.584015, -195, 58.58403, -195, 62.768585, 48.12256)
+
+[sub_resource type="TileSet" id="TileSet_ogew7"]
+tile_size = Vector2i(390, 390)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 30
+sources/0 = SubResource("TileSetAtlasSource_bhv3n")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hes8g"]
+size = Vector2(134, 54)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jk85i"]
 
@@ -13,6 +69,28 @@ drone_scene = ExtResource("4_c16ul")
 
 [node name="Map" type="Sprite2D" parent="."]
 texture = ExtResource("1_jk85i")
+
+[node name="Tiles" type="Node2D" parent="."]
+position = Vector2(-122, -8)
+metadata/_edit_group_ = true
+
+[node name="Soil" type="TileMapLayer" parent="Tiles"]
+scale = Vector2(0.05, 0.05)
+tile_map_data = PackedByteArray("AAD+/wUAAAAAAAAAAAD//wUAAAABAAAAAAAAAAUAAAABAAAAAAAFAAUAAAACAAAAAAD+/wYAAAAAAAEAAAD+/wcAAAAAAAEAAAD+/wgAAAAAAAIAAAD//wgAAAABAAIAAAAAAAgAAAABAAIAAAABAAgAAAABAAIAAAAEAAgAAAABAAIAAAAFAAcAAAACAAEAAAAFAAYAAAACAAEAAAAFAAgAAAACAAIAAAD//wYAAAABAAEAAAAAAAYAAAABAAEAAAAEAAYAAAAAAAEAAAAEAAcAAAAAAAEAAAAAAAcAAAABAAEAAAD//wcAAAABAAEAAAABAAUAAAACAAAAAAABAAYAAAACAAEAAAABAAcAAAACAAEAAAAEAAUAAAAAAAAAAAACAAgAAAABAAIAAAADAAgAAAABAAIAAAA=")
+tile_set = SubResource("TileSet_hes8g")
+
+[node name="Wall" type="TileMapLayer" parent="Tiles"]
+scale = Vector2(0.05, 0.05)
+tile_map_data = PackedByteArray("AAAAAAgAAAABAAAAAAABAAgAAAABAAAAAAACAAgAAAABAAAAAAADAAgAAAABAAAAAAAEAAgAAAABAAAAAAD//wgAAAABAAAAAAAFAAgAAAACAAIAAAD+/wgAAAABAAIAAAD+/wcAAAAAAAIAAAD+/wYAAAAAAAIAAAAFAAcAAAAAAAIAAAAFAAYAAAAAAAIAAAAFAAUAAAACAAEAAAD+/wUAAAABAAEAAAD//wUAAAABAAAAAAAAAAUAAAABAAAAAAABAAUAAAABAAAAAAAEAAUAAAABAAAAAAA=")
+tile_set = SubResource("TileSet_ogew7")
+
+[node name="Room" type="Area2D" parent="Tiles"]
+position = Vector2(122, 8)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Room"]
+position = Vector2(-83, 128)
+shape = SubResource("RectangleShape2D_hes8g")
 
 [node name="Borders" type="StaticBody2D" parent="."]
 collision_mask = 10
@@ -39,3 +117,17 @@ shape = SubResource("WorldBoundaryShape2D_jk85i")
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="Player" parent="Entities" groups=["Player"] instance=ExtResource("1_vaijx")]
+
+[node name="Ball" parent="Entities" instance=ExtResource("5_fptpd")]
+
+[node name="SteamVent" parent="." instance=ExtResource("8_4ongg")]
+position = Vector2(-8, -164)
+
+[node name="SimpleLight" parent="." instance=ExtResource("9_hes8g")]
+position = Vector2(-121, 107)
+scale = Vector2(0.4, 0.4)
+
+[node name="UI" parent="." instance=ExtResource("10_bhv3n")]
+
+[connection signal="body_entered" from="Tiles/Room" to="." method="_on_room_body_entered"]
+[connection signal="body_exited" from="Tiles/Room" to="." method="_on_room_body_exited"]

@@ -98,6 +98,7 @@ size = Vector2(8, 6)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
+collision_mask = 17
 motion_mode = 1
 script = ExtResource("1_nqu8g")
 

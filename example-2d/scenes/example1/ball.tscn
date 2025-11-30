@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://csmnr2fmw6mb3"]
+
+[ext_resource type="Texture2D" uid="uid://ca3hrve7bm36v" path="res://assets/graphics/characters/playerGrey_up1.png" id="1_to185"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jdsee"]
+bounce = 0.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pt3l8"]
+radius = 6.0
+
+[node name="Ball" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_jdsee")
+gravity_scale = 0.1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_to185")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pt3l8")

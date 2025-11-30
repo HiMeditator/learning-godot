@@ -15,6 +15,10 @@ run/main_scene="uid://o5l64v1h03w4"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [input]
 
 left={
@@ -48,6 +52,7 @@ down={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="Bullet"
+2d_physics/layer_5="Ball"
 
 [rendering]
 
