@@ -15,7 +15,7 @@ func _ready():
 	Events.card_aim_ended.connect(_on_card_aim_ended)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not targeting:
 		return
 	
@@ -26,7 +26,8 @@ func _process(delta: float) -> void:
 func _get_points() -> Array:
 	var points := []
 	var start := current_card.global_position
-	start.x += (current_card.size.x / 2)
+	#start.x += current_card.size.x / 2
+	start += current_card.size / 2
 	var target := get_local_mouse_position()
 	var distance := (target - start)
 	
@@ -69,6 +70,7 @@ func _on_area_2d_area_entered(area: Area2D):
 		return
 	
 	if not current_card.targets.has(area):
+		IO_Utils.print_log(0, current_card, " append target: ", area)
 		current_card.targets.append(area)
 
 
@@ -76,4 +78,5 @@ func _on_area_2d_area_exited(area: Area2D):
 	if not current_card or not targeting:
 		return
 	
+	IO_Utils.print_log(0, current_card, " erase target: ", area)
 	current_card.targets.erase(area)

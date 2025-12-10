@@ -4,14 +4,12 @@ const MOUSE_Y_SNAPBACK_THRESHOLD := 138
 
 
 func enter():
-	card_ui.color.color = Color.WEB_PURPLE
-	card_ui.state.text = "AIMING"
+	IO_Utils.print_log(0, card_ui.targets, " clear")
 	card_ui.targets.clear()
 	var offset := Vector2(
-		card_ui.parent.size.x / 2,
+		card_ui.parent.size.x / 2 - card_ui.size.x / 2,
 		-card_ui.parent.size.y / 2
 	)
-	offset.x -= card_ui.size.x / 2
 	card_ui.animate_to_position(card_ui.parent.global_position + offset, 0.2)
 	card_ui.drop_point_detector.monitoring = false
 	Events.card_aim_started.emit(card_ui)
